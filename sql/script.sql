@@ -1,10 +1,20 @@
+create database coursejdbc;
+
+use coursejdbc;
+
 create table Departament (
 	id int Primary Key,
-    nome varchar(50),
-    pessoas int check (pessoas > 0)
+    nome varchar(50) NOT NULL
 );
 
-insert into Departament (id,nome,pessoas) value (1,"RH", 5);
-insert into Departament (id,nome,pessoas) value (2,"DESING", 15);
-insert into Departament (id,nome,pessoas) value (3,"DESENVOLVEDOR", 30);
-insert into Departament (id,nome,pessoas) value (4,"GERENCIA", 3);
+create table Employee (
+    id int Primary Key,
+    nome varchar(50) NOT NULL,
+    id_departamento int,
+    FOREIGN key (id_departamento) references Departament(id)
+);
+
+insert into Departament (id,nome) value (1,"RH");
+insert into Departament (id,nome) value (2,"DESING");
+insert into Departament (id,nome) value (3,"DESENVOLVEDOR");
+insert into Departament (id,nome) value (4,"GERENCIA");
