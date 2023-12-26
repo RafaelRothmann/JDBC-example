@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import db.DB;
+import db.DbIntegrityException;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -12,23 +13,22 @@ public class App {
 
         try {
             conn = DB.getConnection();
-            
+
             st = conn.prepareStatement(
-                "UPDATE Employee SET salario = (salario * ?) WHERE (id = ? and nome = ?)"
+                "DELETE FROM Employee WHERE (id = ?)"
             );
 
-            st.setInt(1, 2);
-            st.setInt(2, 1);
-            st.setString(3, "Daniel");
+            st.setInt(1, 5);
 
             int rowsAffected = st.executeUpdate();
 
             System.out.println("Done! Rows affected: " + rowsAffected);
             
         } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
+            throw new DbIntegrityException(e.getMessage());
 
+        } finally {
+            
             DB.closeStatement(st);
             DB.closeConnection();
         }

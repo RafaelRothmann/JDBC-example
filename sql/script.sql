@@ -25,3 +25,4 @@ insert into Employee (id,nome,salario,id_departamento) value (1,"Daniel",1000,1)
 insert into Employee (id,nome,salario,id_departamento) value (2,"Bob",1500,2);
 insert into Employee (id,nome,salario,id_departamento) value (3,"Maria",3000,3);
 insert into Employee (id,nome,salario,id_departamento) value (4,"Rafael",10000,4);
+insert into Employee (id,nome,salario,id_departamento) value (5,"Nicolas",50000,3);
